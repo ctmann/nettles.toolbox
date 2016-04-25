@@ -1,0 +1,16 @@
+Package: nettles.toolbox
+Title: An electronic satchel of usefyl trick I have gathered.
+Version: 0.0.0.9000
+Authors@R: person("Christopher", "Mann", email = "ctmann@gmail.com", role = c("aut", "cre"))
+Description: Tips and tricks that do not (or should not) fit into an R snippet.
+Depends:
+    R (>= 3.2.4)
+License: Open Source
+LazyData: true
+Imports:
+    dplyr,
+    tidyr,
+    stringr,
+    lubridate,
+    highcharter
+RoxygenNote: 5.0.1.9000
