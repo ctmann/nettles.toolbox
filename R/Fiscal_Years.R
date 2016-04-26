@@ -1,6 +1,6 @@
 #' Define Fiscal Years
 #'
-#' #' Returns the year (fiscal or calendar) and quarter in which the date appears.
+#' Return the year (fiscal or calendar) and quarter in which the date appears.
 #'
 #' This function will cut the given date vector into quarters (i.e. three month
 #' increments) and return an ordered factor with levels defined to be the quarters

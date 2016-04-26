@@ -23,7 +23,7 @@ Setting \code{firstMonth=1} is equivalent calendar years.}
 factor.}
 }
 \description{
-#' Returns the year (fiscal or calendar) and quarter in which the date appears.
+Return the year (fiscal or calendar) and quarter in which the date appears.
 }
 \details{
 This function will cut the given date vector into quarters (i.e. three month
