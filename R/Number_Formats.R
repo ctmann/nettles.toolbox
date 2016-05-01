@@ -1,37 +1,46 @@
-#' nettle_big.numbers
+#' nettle_prettyNum
 #' 
-#' A function that abreviates big numbers and adds K (thousands), M (Millions), B (Billions), T (Trillions) 
+#' A function that formats big (and small) numbers 
 #' 
-#' @param num number to evaluate
-#' @examples big.numbers <- c(100000000, 98875, 86455, 2999999999)
-#' nettle_big.numbers(big.numbers)
-#' 
+#' Numbers that have 12 digits are abreviated "T" for trillion
+#' Numbers that have 9 digits are abreviated "B" for billion
+#' Numbers that have 6 digits are abreviated "M" for Million
+#' Commas are inserted
 #'
 #'
+#' @param num A big or small number
+#' @usage nettle_prettyNum(c(1000, -1000, 1000000, -1000000, 1000000000, -1000000000, 1000000000000, -1000000000000))
 #'
 #' @export
 nettle_big.numbers <- function(num) {
-	# Formats a number with more than 6 digits into an abbreviation string
-	#
-	# Args:
-	#   num: A number of at least 6 digits
-	#
-	# Returns:
-	#   A string of the number abbreviated to "M", "B", or "T"
-	t.index = num >= 1e12
-	b.index = num >= 1e9 & num < 1e12
-	m.index = num >= 1e5 & num < 1e9
-	k.index = num >= 1e5 & num < 1e3
-	output = formatC(num, format = "d", big.mark = ",")
-
-	output[t.index] = paste0(formatC(num[t.index] / 1e12, digits = 1,format = "f"), "T")
-	output[b.index] = paste0(formatC(num[b.index] / 1e9, digits = 1, format = "f"), "B")
-	output[m.index] = paste0(formatC(num[m.index] / 1e6, digits = 1, format = "f"), "M")
-	output[k.index] = paste0(formatC(num[k.index] / 1e3, digits = 1, format = "f"), "K")
-	return(output)
+  t.index = num >= 1e12
+  b.index = num >= 1e9 & num < 1e12
+  m.index = num >= 1e5 & num < 1e9
+  k.index = num >= 1e3 & num < 1e5
+  output = formatC(num, format = "d", big.mark = ",")
+  
+  output[t.index] = paste(formatC(num[t.index] / 1e12, digits = 1,format = "f"), "T")
+  output[b.index] = paste(formatC(num[b.index] / 1e9, digits = 1, format = "f"), "B")
+  output[m.index] = paste(formatC(num[m.index] / 1e6, digits = 1, format = "f"), "M")
+  output[k.index] = paste(formatC(num[k.index] / 1e3, digits = 1, format = "f"), "K")
+  return(output)
 }
-
-
-
-
-
+nettle_small.numbers <- function(num) {
+  t.index = num <= -1e12
+  b.index = num <= -1e9 & num > -1e12
+  m.index = num <= -1e5 & num > -1e9
+  k.index = num <= -1e3 & num > -1e5
+  output = formatC(num, format = "d", big.mark = ",")
+  
+  output[t.index] = paste(formatC(num[t.index] / 1e12, digits = 1,format = "f"), "T")
+  output[b.index] = paste(formatC(num[b.index] / 1e9, digits = 1, format = "f"), "B")
+  output[m.index] = paste(formatC(num[m.index] / 1e6, digits = 1, format = "f"), "M")
+  output[k.index] = paste(formatC(num[k.index] / 1e3, digits = 1, format = "f"), "K")
+  return(output)
+}
+nettle_prettyNum <- function(num){
+  ifelse(num > 0, 
+         printed.number <- nettle_big.numbers(num),
+         printed.number <- nettle_small.numbers(num))
+  return(printed.number)
+}

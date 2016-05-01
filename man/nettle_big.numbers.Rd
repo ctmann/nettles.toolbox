@@ -2,22 +2,20 @@
 % Please edit documentation in R/Number_Formats.R
 \name{nettle_big.numbers}
 \alias{nettle_big.numbers}
-\title{nettle_big.numbers}
+\title{nettle_prettyNum}
 \usage{
-nettle_big.numbers(num)
+nettle_prettyNum(c(1000, -1000, 1000000, -1000000, 1000000000, -1000000000, 1000000000000, -1000000000000))
 }
 \arguments{
-\item{num}{number to evaluate}
+\item{num}{A big or small number}
 }
 \description{
-A function that abreviates big numbers and adds K (thousands), M (Millions), B (Billions), T (Trillions)
+A function that formats big (and small) numbers
 }
-\examples{
-big.numbers <- c(100000000, 98875, 86455, 2999999999)
-nettle_big.numbers(big.numbers)
-
-
-
-
+\details{
+Numbers that have 12 digits are abreviated "T" for trillion
+Numbers that have 9 digits are abreviated "B" for billion
+Numbers that have 6 digits are abreviated "M" for Million
+Commas are inserted
 }
 
