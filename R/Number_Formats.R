@@ -17,7 +17,7 @@ nettle_prettyNum <- function(num){
   b.index <- (num >= 1e9 & num < 1e12)| (num <= -1e9 & num > -1e12)
   m.index <- (num >= 1e5 & num < 1e9) | (num <= -1e5 & num > -1e9)
   k.index <- (num >= 1e3 & num < 1e5) |(num <= -1e3 & num > -1e5)
-  output = formatC(num, format = "d", big.mark = ",")
+  output = suppressWarnings(formatC(num, format = "d", big.mark = ","))
   
   output[t.index] = paste0(formatC(num[t.index] / 1e12, digits = 1,format = "f"), "T")
   output[b.index] = paste0(formatC(num[b.index] / 1e9, digits = 1, format = "f"), "B")
