@@ -18,4 +18,3 @@ Converts characters to R-friendly, all caps. The character 'X' is prepended for
 data that appears to be numeric. Invalid characters are translated to '.' Missing values
 become 'NA.' For more details, refer to make.names function{base}
 }
-

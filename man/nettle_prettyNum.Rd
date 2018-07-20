@@ -18,4 +18,3 @@ Numbers that have 9 digits are abreviated "B" for billion
 Numbers that have 6 digits are abreviated "M" for Million
 Commas are inserted. Some warning messages remain. Not sure why.
 }
-
